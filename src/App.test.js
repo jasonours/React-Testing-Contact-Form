@@ -2,6 +2,7 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import App from "./App";
 
+
 test("renders App without crashing", () => {
   render(<App />);
 });
@@ -30,7 +31,8 @@ test("Message", () => {
   expect(message).toBeInTheDocument();
 });
 
-test("Submit Button", () => {
-  fireEvent.click(submitButton)
-
-})
+test("Submit button", () => {
+  const { getByTestId } = render(<App />);
+  const button = getByTestId('submitButton');
+  fireEvent.click(button);
+});
